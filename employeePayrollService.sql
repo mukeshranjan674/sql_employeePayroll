@@ -36,4 +36,16 @@ where start between cast('2018-01-01' as date) and date(now());
 alter table employee_payroll_service add gender char(1) after name;
 #Ability to set gender using 'where' condition with employee name
 update employee_payroll_service set gender = 'F' where name = 'Terisa';
-update employee_payroll_service set gender = 'M' where name = 'Billie' or name = 'Charlie';
+update employee_payroll_service set gender = 'M' where name = 'Billie' 
+or name = 'Charlie';
+
+#UC7
+#Ability to find sum, average, min, max, count by male or female
+select sum(salary) from employee_payroll_service where gender = 'F'
+group by gender;
+select gender, sum(salary) from employee_payroll_service
+where gender = 'M' group by gender;
+select gender, avg(salary) from employee_payroll_service group by gender;
+select gender, min(salary) from employee_payroll_service group by gender;
+select gender, max(salary) from employee_payroll_service group by gender;
+select gender, count(salary) from employee_payroll_service group by gender;
