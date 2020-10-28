@@ -22,4 +22,10 @@ INSERT INTO employee_payroll_service(name, salary, start) VALUES
 
 #UC4
 #Ability to retrieve all data of table
-select * from employee_payroll_service;						
+select * from employee_payroll_service;					
+#UC5
+#Ability to retrieve salary of particular employee
+select salary from employee_payroll_service where name = 'Bill';
+#Ability to retrieve employee data for a particular range of date
+select * from employee_payroll_service
+where start between cast('2018-01-01' as date) and date(now());	
