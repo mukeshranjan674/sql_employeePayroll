@@ -14,9 +14,12 @@ PRIMARY KEY (id)
 );
 
 #UC3
-#ABILITY TO INSERT DATA IN TABLE
+#Ability to insert into the table
 INSERT INTO employee_payroll_service(name, salary, start) VALUES
 ('Billie', 1000000.00, '2020-02-02'),
 ('Terisa', 20000000.00, '2018-02-02'),
 ('Charlie', 30000000.00, '2018-02-02');
-										
+
+#UC4
+#Ability to retrieve all data of table
+select * from employee_payroll_service;						
