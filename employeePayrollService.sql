@@ -22,10 +22,18 @@ INSERT INTO employee_payroll_service(name, salary, start) VALUES
 
 #UC4
 #Ability to retrieve all data of table
-select * from employee_payroll_service;					
+select * from employee_payroll_service;
+					
 #UC5
 #Ability to retrieve salary of particular employee
 select salary from employee_payroll_service where name = 'Bill';
 #Ability to retrieve employee data for a particular range of date
 select * from employee_payroll_service
 where start between cast('2018-01-01' as date) and date(now());	
+
+#UC6
+#Ability to alter table data with addition of a new field gender
+alter table employee_payroll_service add gender char(1) after name;
+#Ability to set gender using 'where' condition with employee name
+update employee_payroll_service set gender = 'F' where name = 'Terisa';
+update employee_payroll_service set gender = 'M' where name = 'Billie' or name = 'Charlie';
