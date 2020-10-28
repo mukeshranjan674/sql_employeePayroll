@@ -12,3 +12,11 @@ salary Double NOT NULL,
 start DATE NOT NULL,
 PRIMARY KEY (id)
 );
+
+#UC3
+#ABILITY TO INSERT DATA IN TABLE
+INSERT INTO employee_payroll_service(name, salary, start) VALUES
+('Billie', 1000000.00, '2020-02-02'),
+('Terisa', 20000000.00, '2018-02-02'),
+('Charlie', 30000000.00, '2018-02-02');
+										
