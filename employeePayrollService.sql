@@ -151,3 +151,12 @@ insert into Employee_Department values
 (1001, 101),
 (1001, 102),
 (1002, 103);
+
+#UC12
+#Ability to retrieve all queries of UC4, UC5, UC7
+select name, p.net_pay from employee e left join payroll p on e.emp_id = p.emp_id where name = 'Ram';
+select gender, sum(p.net_pay) from employee e left join payroll p on e.emp_id = p.emp_id group by e.gender;
+select gender, avg(p.net_pay) from employee e left join payroll p on e.emp_id = p.emp_id group by e.gender;
+select gender, min(p.net_pay) from employee e left join payroll p on e.emp_id = p.emp_id;
+select gender, max(p.net_pay) from employee e left join payroll p on e.emp_id = p.emp_id;
+select gender, count(gender) from employee group by gender;
