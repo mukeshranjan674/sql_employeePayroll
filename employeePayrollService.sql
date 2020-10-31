@@ -72,3 +72,82 @@ UPDATE employee_payroll SET department = 'Sales' WHERE name = 'Terisa';
 INSERT INTO employee_payroll
 (name, department, gender, basic_pay, deductions, taxable_pay, tax, net_pay, start) VALUES
 ('Terisa', 'Marketing', 'F', 3000000.00, 1000000.00, 2000000.00, 500000.00, 1500000.00, '2018-01-03');
+
+#UC11
+#Ability to implement an Entity - Relationship Model into the database
+drop table employee_payroll;
+create table Company
+(
+comp_id int unsigned not null,
+comp_name varchar(20) not null,
+primary key(comp_id)
+);
+select * from Company;
+
+create table Employee
+(
+comp_id int unsigned not null,
+emp_id int unsigned not null,
+name varchar(250) not null,
+gender char(1) not null,
+phone_number VARCHAR(250) not null,
+address VARCHAR(250) not null,
+primary key(emp_id),
+foreign key(comp_id) references Company(comp_id)
+);
+select * from Employee;
+
+create table Payroll
+(
+emp_id int unsigned not null,
+basic_pay double not null,
+deductions double not null,
+taxable_pay double not null,
+tax double not null,
+net_pay double not null,
+foreign key(emp_id) references Employee(emp_id)
+);
+select * from Payroll;
+
+create table Department
+(
+dept_id int unsigned not null,
+dept_name varchar(20) not null,
+primary key(dept_id)
+);
+select * from Department;
+
+create table Employee_Department
+(
+emp_id int unsigned not null,
+dept_id int unsigned not null,
+primary key(emp_id, dept_id),
+foreign key(emp_id) references Employee(emp_id),
+foreign key(dept_id) references Department(dept_id)
+);
+select * from Employee_Department;
+
+insert into Company values
+(1, 'Capgemini'),
+(2, 'Reliance'),
+(3, 'IRCTC');
+
+insert into Employee values
+(1, 1001, 'Ram', 'M', 8956855565, 'Main street, andheri, Mumbai 465002'),
+(1, 1002, 'Shyam', 'M', 8956875565, 'Second street, andheri, Mumbai 465002'),
+(3, 1003, 'Sita', 'F', 8956875565, 'third street, andheri, Mumbai 465002');
+
+insert into Payroll values
+(1001, 60000.0, 5000.0, 55000.0, 5000.0, 50000.0),
+(1002, 70000.0, 5000.0, 65000.0, 5000.0, 60000.0),
+(1003, 80000.0, 5000.0, 75000.0, 5000.0, 70000.0);
+
+insert into Department values
+(101, 'Marketing'),
+(102, 'Sales'),
+(103, 'Accounts');
+
+insert into Employee_Department values 
+(1001, 101),
+(1001, 102),
+(1002, 103);
